@@ -25,7 +25,7 @@ def load_investor_details(investor):
     st.pyplot(fig)
 
 
-    col1, col2 = st.columns(2)
+    col1 = st.columns()
     with col1:
         st.title("Biggest 5 Investment")
         # biggest investment
@@ -37,17 +37,17 @@ def load_investor_details(investor):
         ax1.set_xlabel('StartUps')
         ax1.set_ylabel('Amount(CR)')
         st.pyplot(fig1)
-
-    with col2:
+    col1 = st.columns(1)
+    with col1:
         st.title("Investment Type")
         stage_series = df[df['Investors'].str.contains(investor)].groupby('Investment Type')['Amount in CR'].sum()
 
-        fig2, ax2 = plt.subplots()
-        ax2.pie(stage_series, labels=stage_series.index, autopct='%0.01f%%',rotatelabels=True,labeldistance=1.5)
+        fig1, ax1 = plt.subplots()
+        ax1.pie(stage_series, labels=stage_series.index, autopct='%0.01f%%',rotatelabels=True,labeldistance=1.5)
 
-        st.pyplot(fig2)
+        st.pyplot(fig1)
 
-    col1, col2 = st.columns(2)
+    col1 = st.columns(1)
     with col1:
         st.title("Invested Cities")
         city_series = df[df['Investors'].str.contains(investor)].groupby('City')['Amount in CR'].sum()
@@ -56,14 +56,14 @@ def load_investor_details(investor):
         ax1.pie(city_series, labels=city_series.index, autopct='%0.01f%%',rotatelabels=True,labeldistance=1.5)
 
         st.pyplot(fig1)
-
-    with col2:
+    col1 = st.columns(1)
+    with col1:
         st.title('YOY Investment Analysis')
         df['Year'] = pd.to_datetime(df['Date'], dayfirst=True).dt.year
         year_series = df[df['Investors'].str.contains(investor)].groupby('Year')['Amount in CR'].sum()
 
-        fig2, ax2 = plt.subplots()
-        ax2.plot(year_series.index,year_series.values)
+        fig1, ax1 = plt.subplots()
+        ax1.plot(year_series.index,year_series.values)
 
         st.pyplot(fig2)
 
