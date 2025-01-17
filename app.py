@@ -20,7 +20,7 @@ def load_investor_details(investor):
     pie_series = df[df['Investors'].str.contains(investor)].groupby('Vertical')['Amount in CR'].sum()
 
     fig, ax = plt.subplots()
-    ax.pie(pie_series, labels=pie_series.index, rotatelabels=True)
+    ax.pie(pie_series, labels=pie_series.index, rotatelabels=True, labeldistance=1.5)
 
     st.pyplot(fig)
 
@@ -43,8 +43,7 @@ def load_investor_details(investor):
         stage_series = df[df['Investors'].str.contains(investor)].groupby('Investment Type')['Amount in CR'].sum()
 
         fig2, ax2 = plt.subplots()
-        ax2.pie(stage_series, labels=stage_series.index, autopct='%0.01f%%',rotatelabels=True)
-        ax2.Legend()
+        ax2.pie(stage_series, labels=stage_series.index, autopct='%0.01f%%',rotatelabels=True,labeldistance=1.5)
 
         st.pyplot(fig2)
 
@@ -54,7 +53,7 @@ def load_investor_details(investor):
         city_series = df[df['Investors'].str.contains("The HR Fund")].groupby('City')['Amount in CR'].sum()
 
         fig1, ax1 = plt.subplots()
-        ax1.pie(city_series, labels=city_series.index, autopct='%0.01f%%')
+        ax1.pie(city_series, labels=city_series.index, autopct='%0.01f%%',rotatelabels=True,labeldistance=1.5)
 
         st.pyplot(fig1)
 
