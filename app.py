@@ -20,7 +20,7 @@ def load_investor_details(investor):
     pie_series = df[df['Investors'].str.contains(investor)].groupby('Vertical')['Amount in CR'].sum()
 
     fig, ax = plt.subplots()
-    ax.pie(pie_series, labels=pie_series.index, autopct='%0.01f%%')
+    ax.bar(pie_series, labels=pie_series.index)
 
     st.pyplot(fig)
 
