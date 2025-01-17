@@ -103,7 +103,7 @@ def load_overall_analysis():
         temp_df = df.groupby(['Year', 'month'])['Startup'].count().reset_index()
         temp_df['x_axis'] = temp_df['month'].astype('str') + '-' + temp_df['Year'].astype('str')
 
-        fig5, ax5= plt.subplots(figsize=(7,3))
+        fig5, ax5= plt.subplots(figsize=(10,3))
         ax5.bar(temp_df['x_axis'], temp_df['Startup'])
         ax5.set_title('Total Funded StartUps per Month')
         ax5.set_ylabel('No. of StartUps')
@@ -127,6 +127,7 @@ def load_overall_analysis():
         ax5.set_title('Total Amount Funded per Month')
         ax5.set_ylabel('Amount (in CR)')
         ax5.set_xlabel('Month-Year')
+        plt.xticks(temp_df1['x_axis'],rotation='vertical')
         # ax5.set_xticks(rotation='vertical')
         # ax5.legend()
 
