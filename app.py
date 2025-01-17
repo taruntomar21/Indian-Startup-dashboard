@@ -44,7 +44,7 @@ def load_investor_details(investor):
 
         fig2, ax2 = plt.subplots()
         ax2.pie(stage_series, autopct='%0.01f%%')
-        ax2.legend()
+        ax2.Legend()
 
         st.pyplot(fig2)
 
