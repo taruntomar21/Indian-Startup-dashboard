@@ -50,7 +50,7 @@ def load_investor_details(investor):
     col1, col2 = st.columns(2)
     with col1:
         st.title("Invested Cities")
-        city_series = df[df['Investors'].str.contains("The HR Fund")].groupby('City')['Amount in CR'].sum()
+        city_series = df[df['Investors'].str.contains(investor)].groupby('City')['Amount in CR'].sum()
 
         fig1, ax1 = plt.subplots()
         ax1.pie(city_series, labels=city_series.index, autopct='%0.01f%%',rotatelabels=True,labeldistance=1.5)
