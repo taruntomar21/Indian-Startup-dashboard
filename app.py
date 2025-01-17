@@ -126,7 +126,7 @@ def load_overall_analysis():
         ax5.set_title('Total Amount Funded per Month')
         ax5.set_ylabel('Amount (in CR)')
         ax5.set_xlabel('Month-Year')
-        plt.xticks(temp_df1['x_axis'], rotation='vertical')
+        ax5.xticks(temp_df1['x_axis'],rotation='vertical')
         # ax5.set_xticks(rotation='vertical')
         # ax5.legend()
 
