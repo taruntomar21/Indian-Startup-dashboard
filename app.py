@@ -43,7 +43,7 @@ def load_investor_details(investor):
         stage_series = df[df['Investors'].str.contains(investor)].groupby('Investment Type')['Amount in CR'].sum()
 
         fig2, ax2 = plt.subplots()
-        ax2.pie(stage_series, autopct='%0.01f%%')
+        ax2.pie(stage_series, labels=stage_series.index, autopct='%0.01f%%',rotatelabels=True)
         ax2.Legend()
 
         st.pyplot(fig2)
