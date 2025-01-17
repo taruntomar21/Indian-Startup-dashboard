@@ -25,7 +25,7 @@ def load_investor_details(investor):
     st.pyplot(fig)
 
 
-    col1 = st.columns()
+    col1 = st.columns(1)
     with col1:
         st.title("Biggest 5 Investment")
         # biggest investment
@@ -65,7 +65,7 @@ def load_investor_details(investor):
         fig1, ax1 = plt.subplots()
         ax1.plot(year_series.index,year_series.values)
 
-        st.pyplot(fig2)
+        st.pyplot(fig1)
 
 def load_overall_analysis():
     st.title('Overall Analysis')
