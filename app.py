@@ -64,7 +64,7 @@ def load_investor_details(investor):
     year_series = df[df['Investors'].str.contains(investor)].groupby('Year')['Amount in CR'].sum()
 
     fig4, ax4 = plt.subplots()
-    ax4.plot(year_series.index,year_series.values)
+    ax4.plot(year_series.index,year_series.values,marker='o')
 
     st.pyplot(fig4)
 
@@ -121,7 +121,7 @@ def load_overall_analysis():
         temp_df1['x_axis'] = temp_df1['month'].astype('str') + '-' + temp_df1['Year'].astype('str')
 
         fig5, ax5 = plt.subplots(figsize=(7, 3))
-        ax5.plot(temp_df1['x_axis'], temp_df1['Amount in CR'])
+        ax5.plot(temp_df1['x_axis'], temp_df1['Amount in CR'],marker='o')
 
         ax5.set_title('Total Amount Funded per Month')
         ax5.set_ylabel('Amount (in CR)')
