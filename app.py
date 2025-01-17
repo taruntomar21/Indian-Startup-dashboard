@@ -24,48 +24,49 @@ def load_investor_details(investor):
 
     st.pyplot(fig)
 
+    #analysis1
+    
+    st.title("Biggest 5 Investment")
+    # biggest investment
+    big_series = df[df["Investors"].str.contains(investor)].groupby('Startup')['Amount in CR'].sum().sort_values(ascending=False).head(5)
 
-    col1 = st.columns(1)
-    with col1:
-        st.title("Biggest 5 Investment")
-        # biggest investment
-        big_series = df[df["Investors"].str.contains(investor)].groupby('Startup')['Amount in CR'].sum().sort_values(ascending=False).head(5)
+    fig1, ax1 = plt.subplots()
+    ax1.bar(big_series.index, big_series.values)
+    ax1.set_title('Top 5 Investments of investor')
+    ax1.set_xlabel('StartUps')
+    ax1.set_ylabel('Amount(CR)')
+    st.pyplot(fig1)
 
-        fig1, ax1 = plt.subplots()
-        ax1.bar(big_series.index, big_series.values)
-        ax1.set_title('Top 5 Investments of investor')
-        ax1.set_xlabel('StartUps')
-        ax1.set_ylabel('Amount(CR)')
-        st.pyplot(fig1)
-    col1 = st.columns(1)
-    with col1:
-        st.title("Investment Type")
-        stage_series = df[df['Investors'].str.contains(investor)].groupby('Investment Type')['Amount in CR'].sum()
+    #analysis2
+    
+    st.title("Investment Type")
+    stage_series = df[df['Investors'].str.contains(investor)].groupby('Investment Type')['Amount in CR'].sum()
 
-        fig1, ax1 = plt.subplots()
-        ax1.pie(stage_series, labels=stage_series.index, autopct='%0.01f%%',rotatelabels=True,labeldistance=1.5)
+    fig2, ax2 = plt.subplots()
+    ax2.pie(stage_series, labels=stage_series.index, autopct='%0.01f%%',rotatelabels=True,labeldistance=1.5)
 
-        st.pyplot(fig1)
+    st.pyplot(fig2)
 
-    col1 = st.columns(1)
-    with col1:
-        st.title("Invested Cities")
-        city_series = df[df['Investors'].str.contains(investor)].groupby('City')['Amount in CR'].sum()
+    #analysis3
+    
+    st.title("Invested Cities")
+    city_series = df[df['Investors'].str.contains(investor)].groupby('City')['Amount in CR'].sum()
 
-        fig1, ax1 = plt.subplots()
-        ax1.pie(city_series, labels=city_series.index, autopct='%0.01f%%',rotatelabels=True,labeldistance=1.5)
+    fig3, ax3 = plt.subplots()
+    ax3.pie(city_series, labels=city_series.index, autopct='%0.01f%%',rotatelabels=True,labeldistance=1.5)
 
-        st.pyplot(fig1)
-    col1 = st.columns(1)
-    with col1:
-        st.title('YOY Investment Analysis')
-        df['Year'] = pd.to_datetime(df['Date'], dayfirst=True).dt.year
-        year_series = df[df['Investors'].str.contains(investor)].groupby('Year')['Amount in CR'].sum()
+    st.pyplot(fig3)
+    
+   #analysis4
+    
+    st.title('YOY Investment Analysis')
+    df['Year'] = pd.to_datetime(df['Date'], dayfirst=True).dt.year
+    year_series = df[df['Investors'].str.contains(investor)].groupby('Year')['Amount in CR'].sum()
 
-        fig1, ax1 = plt.subplots()
-        ax1.plot(year_series.index,year_series.values)
+    fig4, ax4 = plt.subplots()
+    ax4.plot(year_series.index,year_series.values)
 
-        st.pyplot(fig1)
+    st.pyplot(fig4)
 
 def load_overall_analysis():
     st.title('Overall Analysis')
