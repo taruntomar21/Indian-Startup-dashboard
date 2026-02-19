@@ -3,3 +3,5 @@ numpy
 matplotlib
 plotly
 streamlit
+streamlit>=1.32
+altair<5
